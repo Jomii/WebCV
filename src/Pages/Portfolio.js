@@ -11,8 +11,7 @@ import Sketch from './Sketch';
 import { GridListTileBar, Paper, withWidth, withStyles } from '@material-ui/core';
 
 /* TODO:
-    - Fix modal view scroll lag in mobile. (Possible cause modal view itself, and content being in the background? )
-    - Separate styles from modal view so they can be used on the data of the portolio items divs. */
+    - Fix modal view scroll lag in mobile. (Possible cause modal view itself, and content being in the background? )*/
 
 const linkStyle = {
     color: '#00e5ff',
