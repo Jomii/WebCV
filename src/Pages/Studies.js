@@ -32,10 +32,10 @@ const styles = theme => ({
     },
 });
 
-// Gets the data from DataInterface.
+// Gets the course data from Courses.
 const data = Courses.getCourses();
 
-// Function to calculate the value set to the progress bar.
+// Function to sum the ects in course data.
 function sumECTS() {
     var sum = 0;
 
@@ -51,15 +51,6 @@ function sumECTS() {
 }
 
 class Studies extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            open: false,
-            alertOpen: false,
-            index: null,
-        }
-    }
-
     render() {
         return (
             <div style={{ width: '100%', margin: 'auto' }}>
@@ -84,7 +75,7 @@ class Studies extends React.Component {
                 {/* Separate table for the header to prevent it from scrolling */}
                 <div style={{ margin: 'auto', width: '60%', paddingBottom: '5px' }}>
                     <Typography style={{ paddingTop: '3em', textAlign: 'center' }}>
-                        Completed courses:
+                        {BUNDLE[this.props.lang].compCourses}
                     </Typography>
 
                     <Table>
@@ -95,10 +86,10 @@ class Studies extends React.Component {
                                 </Hidden>
                                 <TableCell padding="none" style={{ textAlign: 'left' }}> {this.props.lang === "en" ? "NAME" : "NIMI"} </TableCell>
                                 {/* A few empty cells to act as padding in the table header */}
-                                <Hidden only={['sm', 'xs']}>
-
+                                <Hidden only={['sm', 'xs']}> {/* Hide one cell worth of padding in small screens. */}
                                     <TableCell>  </TableCell>
                                 </Hidden>
+
                                 <TableCell>  </TableCell>
 
                                 <Hidden only={['sm', 'xs']}>

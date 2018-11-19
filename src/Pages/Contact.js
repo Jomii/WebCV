@@ -19,7 +19,7 @@ class Contact extends React.Component {
     render() {
         return (
             <div className={this.props.classes.textArea} >
-                <Typography>
+                <Typography style={{textAlign: 'center'}}>
                     {BUNDLE[this.props.lang].contact}
                     <br /><br /> E-Mail: Johansson.Miika.A@student.uta.fi
                 </Typography>

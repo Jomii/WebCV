@@ -4,15 +4,22 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 const styles = theme => ({
-    // Change a div style with classname testi based on the breakpoint.
-    content: {
+    // Change a div style based on the breakpoint.
+    wrap: {
         [theme.breakpoints.down('sm')]: {
             padding: '0 10% 10% 10%',
         },
         [theme.breakpoints.up('md')]: {
             paddingLeft: "25%",
             paddingRight: "25%",
-            paddingTop: "4em"
+            paddingTop: "2em",
+        },
+    },
+
+    textArea: {
+        [theme.breakpoints.up('md')]: {
+            display: 'block',
+            overflow: 'hidden',
         },
     },
 
@@ -28,8 +35,8 @@ const styles = theme => ({
             width: '60%'
         },
         [theme.breakpoints.up('md')]: {
-            paddingRight: "2%",
             float: 'left',
+            marginRight: '2em',
             height: 'auto',
             width: '242px',
         },
@@ -41,12 +48,19 @@ class Home extends React.Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className={classes.content}>
+            <div className={classes.wrap} >
 
                 <img className={classes.image} alt='profile' src={"profile.png"} />
-                <div >
+
+                <div className={classes.textArea}>
+                    <Typography variant="display1">
+                        {BUNDLE[this.props.lang].welcome}
+                        <br /><br />
+                    </Typography>
                     <Typography>
-                        {BUNDLE[this.props.lang].about}
+                        
+                        {/* Split the text from '\n' and map the parts to text, with linebreaks in between. */}
+                        {BUNDLE[this.props.lang].about.split('\n').map(line => <Typography>{line}<br/></Typography>) }
                         <br /><br />
                         {BUNDLE[this.props.lang].pLangs}
                         <ul>

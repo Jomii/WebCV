@@ -38,12 +38,7 @@ class App extends Component {
         )
     }
 
-    // Changes the text size from radiobuttons.
-    handleChange = (v) => {
-        this.setState({ textSize: v });
-    }
-
-    // Used to swap the switch values in settings menu. Parameter specifies which switch to update.
+    // Function to change between tabs and languages.
     updateValue = (value) => {
         var tab = this.state.tab;
         let lang = this.state.lang;
@@ -71,12 +66,13 @@ class App extends Component {
                             <Header lang={this.state.lang} tab={this.state.tab} textSize={this.state.textSize} theme={theme} clock={this.state.clock} onChange={this.updateValue} onSizeChange={this.handleChange} />
 
                             <div className="content" >
-                                {/* Root adress of the host website as path */}
+                                {/* Paths for testing the app locally. */}
                                 <Route exact path="/" render={props => (<Home lang={this.state.lang} />)} />
                                 <Route exact path="/portfolio" render={props => (<Portfolio lang={this.state.lang} />)} />
                                 <Route exact path="/studies" render={props => (<Studies lang={this.state.lang} />)} />
                                 <Route exact path="/contact" render={props => (<Contact lang={this.state.lang} />)} />
 
+                                {/* Root adress of the host website as path */}
                                 {/* <Route exact path="/~mj427655/" render={props => (<Home lang={this.state.lang} />)} />
                                 <Route exact path="/~mj427655/portfolio" render={props => (<Portfolio lang={this.state.lang} />)} />
                                 <Route exact path="/~mj427655/studies" render={props => (<Studies lang={this.state.lang} />)} />

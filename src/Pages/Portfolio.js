@@ -11,7 +11,20 @@ import Sketch from './Sketch';
 import { GridListTileBar, Paper, withWidth, withStyles } from '@material-ui/core';
 
 /* TODO:
-    Fix modal view scroll lag in mobile. (Possible cause modal view itself, and content being in the background? )*/
+    - Fix modal view scroll lag in mobile. (Possible cause modal view itself, and content being in the background? )
+    - Separate styles from modal view so they can be used on the data of the portolio items divs. */
+
+const linkStyle = {
+    color: '#00e5ff',
+}
+
+const dataDivStyle = {
+    padding: '2em 20% 0 30%',
+}
+
+function createLink(link) {
+    return <a style={linkStyle} target="_blank" rel="noopener noreferrer" href={link}><Typography style={linkStyle}>GitHub link</Typography></a>;
+}
 
 const styles = theme => ({
     PFModal: {
@@ -39,11 +52,12 @@ const styles = theme => ({
         [theme.breakpoints.down('sm')]: {
             height: 'auto',
             maxWidth: '100%',
+            paddingBottom: '2em',
         },
 
         [theme.breakpoints.up('md')]: {
             height: 'auto',
-            width: '18%',
+            width: '25%',
             margin: '0 2% 0 2%',
             float: 'left',
         },
@@ -105,14 +119,14 @@ class Portfolio extends React.Component {
     render() {
         // Data used for setting up the portfolio.
         const data = [
-            // Sketch broken for now. TODO: add a separate site for react demonstrations.
-            { id: 0, title: "Pong", subTitle: 'Java', description: BUNDLE[this.props.lang].description_Pong, imgSrc: 'Pong.png' },
-            { id: 1, title: "Exceler", subTitle: 'Python', description: BUNDLE[this.props.lang].description_Exceler, imgSrc: 'Exceler.png' },
-            { id: 2, title: 'Portfolio', subTitle: 'React', description: BUNDLE[this.props.lang].description_Portfolio, imgSrc: 'react-1.svg' },
+            // TODO: fix data key styling.
+            { id: 0, title: "Pong", subTitle: 'Java', description: BUNDLE[this.props.lang].description_Pong, imgSrc: 'Pong.png', data: <div style={dataDivStyle}>{createLink("https://github.com/Jomii/Pong")}</div> },
+            { id: 1, title: "Exceler", subTitle: 'Python', description: BUNDLE[this.props.lang].description_Exceler, imgSrc: 'Exceler.png', data: <div style={dataDivStyle}>{createLink("https://github.com/Jomii/Exceler")}</div> },
+            { id: 2, title: 'Portfolio', subTitle: 'React', description: BUNDLE[this.props.lang].description_Portfolio, imgSrc: 'react-1.svg', data: <div style={dataDivStyle}>{createLink("https://github.com/Jomii/WebCV")}</div> },
             { id: 3, title: BUNDLE[this.props.lang].title_Data_Structures, subTitle: 'Java', description: BUNDLE[this.props.lang].description_Data, imgSrc: 'Data_structures.png'},
-            { id: 4, title: 'React components', subTitle: 'React', description: BUNDLE[this.props.lang].description_RComponents, imgSrc: 'react-1.svg', data: <div><Clock/><Sketch/></div> },
-            { id: 5, title: 'S.O.B.', subTitle: 'Java', description: BUNDLE[this.props.lang].description_SOB, imgSrc: 'MSGBoard.png' },
-            { id: 6, title: "UI Design", subTitle: 'UI / UX / Design', description: BUNDLE[this.props.lang].description_AR, imgSrc: 'kirjautuminen.png' },
+            { id: 4, title: 'React components', subTitle: 'React', description: BUNDLE[this.props.lang].description_RComponents, imgSrc: 'react-1.svg', data: <div style={dataDivStyle}>{createLink("https://github.com/Jomii/MyReactComponents")}<Clock/><Sketch/></div> },
+            { id: 5, title: 'S.O.B.', subTitle: 'Java', description: BUNDLE[this.props.lang].description_SOB, imgSrc: 'MSGBoard.png', data: <div style={dataDivStyle}>{createLink("https://github.com/Jomii/SOB")}</div> },
+            { id: 6, title: "UI Design WIP", subTitle: 'UI / UX / Design', description: BUNDLE[this.props.lang].description_AR, imgSrc: 'kirjautuminen.png' },
         ]
         // Change columns value based on the width of the device. Width gotten from withWidth.
         const col = screenWidth[this.props.width] || 3; // Either 1 column if width = xs, else 3 columns.
