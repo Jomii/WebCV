@@ -119,7 +119,6 @@ class Portfolio extends React.Component {
     render() {
         // Data used for setting up the portfolio.
         const data = [
-            // TODO: fix data key styling.
             { id: 0, title: "Pong", subTitle: 'Java', description: BUNDLE[this.props.lang].description_Pong, imgSrc: 'Pong.png', data: <div style={dataDivStyle}>{createLink("https://github.com/Jomii/Pong")}</div> },
             { id: 1, title: "Exceler", subTitle: 'Python', description: BUNDLE[this.props.lang].description_Exceler, imgSrc: 'Exceler.png', data: <div style={dataDivStyle}>{createLink("https://github.com/Jomii/Exceler")}</div> },
             { id: 2, title: 'Portfolio', subTitle: 'React', description: BUNDLE[this.props.lang].description_Portfolio, imgSrc: 'react-1.svg', data: <div style={dataDivStyle}>{createLink("https://github.com/Jomii/WebCV")}</div> },
